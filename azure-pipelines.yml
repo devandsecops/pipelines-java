@@ -20,4 +20,9 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectedServiceName: 'Free Trial(116df425-4329-4626-a646-15bab9edd713)'
+    WebAppKind: 'webAppLinux'
+    WebAppName: 'pipeline-java'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.war'
